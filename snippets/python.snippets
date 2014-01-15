@@ -3,6 +3,8 @@ snippet #!
 
 snippet imp
 	import ${1:module}
+snippet fi
+	from ${1:cheese} import ${2:stilton}
 # Module Docstring
 snippet docs
 	'''
@@ -18,24 +20,44 @@ snippet for
 		${3:# code...}
 # New Class
 snippet cl
+	#==============================================================================
 	class ${1:ClassName}(${2:object}):
-		"""${3:docstring for $1}"""
-		def __init__(self, ${4:arg}):
-			${5:super($1, self).__init__()}
-			self.$4 = $4
-			${6}
+
+	    #--------------------------------------------------------------------------
+	    def __init__(self):
+	        ${3:super($1, self).__init__()}
+	        ${4}
 # New Function
 snippet def
+	#--------------------------------------------------------------------------
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		"""${3:docstring for $1}"""
-		${4:pass}
-snippet deff
-	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		${3}
-# New Method
-snippet defs
-	def ${1:mname}(self, ${2:arg}):
 		${3:pass}
+snippet defd
+	#--------------------------------------------------------------------------
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+	    """
+	    ${3}
+	    """
+	    ${4:pass}
+snippet tcl
+	#==============================================================================
+	class Test${1:ClassName}(unittest.TestCase):
+
+	    #--------------------------------------------------------------------------
+	    def __init__(self):
+	        ${2:pass}
+
+	    #--------------------------------------------------------------------------
+	    def setUp(self):
+	        ${3:pass}
+
+	    #--------------------------------------------------------------------------
+	    def tearDown(self):
+	        ${4:pass}
+snippet tdef
+	#--------------------------------------------------------------------------
+	def test${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+	    ${3:pass}
 # New Property
 snippet property
 	def ${1:foo}():
@@ -84,3 +106,7 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+snippet #--
+	#--------------------------------------------------------------------------
+snippet #==
+	#==============================================================================
